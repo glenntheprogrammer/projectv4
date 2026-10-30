@@ -31,8 +31,6 @@ Architecture: MVC (Model-View-Controller)
 📥 Installation Guide
 
 1. Clone the Repository
-   
-git clone https://github.com/glenntheprogrammer/CI4-Crud.git
 
 cd CI4-Crud OR Download Zip
 
