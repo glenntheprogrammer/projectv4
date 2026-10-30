@@ -27,7 +27,7 @@
             <i class="fas fa-school"></i>
           </span>
           <div>
-            <span class="page-pretitle">Project 4</span>
+            <span class="page-pretitle">ProjectV4</span>
             <h2 class="h4 mb-0">Welcome to your management portal</h2>
           </div>
         </div>

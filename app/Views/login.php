@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project 4 | Log in</title>
+  <title>ProjectV4 | Log in</title>
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/fontawesome-free/css/all.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/dist/css/adminlte.min.css') ?>">
@@ -15,7 +15,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">
         <span class="project4-logo-mark" aria-hidden="true">P4</span>
-        <br><strong class="d-block mt-3 text-dark">Project 4</strong>
+        <br><strong class="d-block mt-3 text-dark">ProjectV4</strong>
         Sign in to start your session
       </p>
 

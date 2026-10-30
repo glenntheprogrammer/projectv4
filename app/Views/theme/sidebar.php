@@ -4,7 +4,7 @@
       <span class="brand-logo-mark" aria-hidden="true">P4</span>
     </span>
     <span class="brand-text">
-      <span class="brand-name">Project <span>4</span></span>
+      <span class="brand-name">ProjectV4</span>
       <span class="brand-caption">Management portal</span>
     </span>
   </div>
