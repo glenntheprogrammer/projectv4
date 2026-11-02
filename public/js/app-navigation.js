@@ -216,6 +216,10 @@
   });
 
   document.addEventListener('submit', function (event) {
+    if (event.defaultPrevented) {
+      return;
+    }
+
     const form = event.target;
     if (!(form instanceof HTMLFormElement) || form.method.toLowerCase() !== 'get') {
       return;

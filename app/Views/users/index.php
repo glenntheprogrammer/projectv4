@@ -58,7 +58,7 @@
     <!-- ✅ Add New Modal -->
     <div class="modal fade" id="AddNewModal" tabindex="-1" role="dialog" aria-labelledby="AddNewModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <form id="addUserForm">
+        <form id="addUserForm" action="<?= base_url('users/save') ?>" method="post">
           <?= csrf_field() ?>
           <div class="modal-content">
             <div class="modal-header">
@@ -128,7 +128,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="editUserForm">
+        <form id="editUserForm" action="<?= base_url('users/update') ?>" method="post">
            <?= csrf_field() ?>
           <div class="modal-body">
 
@@ -184,6 +184,35 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered user-delete-dialog" role="document">
+      <div class="modal-content user-delete-card">
+        <button type="button" class="close user-delete-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-body user-delete-body">
+          <div class="user-delete-icon" aria-hidden="true">
+            <i class="fas fa-trash-alt"></i>
+          </div>
+          <h5 class="user-delete-title" id="deleteUserModalLabel">Delete this user?</h5>
+          <p class="user-delete-description">
+            Are you sure you want to delete this user? This action cannot be undone.
+          </p>
+          <div class="user-delete-warning">
+            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+            <span>The user account and its access will be removed.</span>
+          </div>
+        </div>
+        <div class="modal-footer user-delete-footer">
+          <button type="button" class="btn user-delete-cancel" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger user-delete-confirm" id="confirmDeleteUser">
+            <i class="fas fa-trash-alt mr-1" aria-hidden="true"></i> Delete user
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>

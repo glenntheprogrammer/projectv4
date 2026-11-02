@@ -6,6 +6,21 @@ function showToast(type, message) {
     }
 }
 
+function refreshUsersTable() {
+    const $table = $('#example1');
+    if (!$table.length) {
+        return;
+    }
+
+    if ($.fn.DataTable.isDataTable($table[0])) {
+        $table.DataTable().ajax.reload(null, false);
+    } else {
+        initializeUsersPage();
+    }
+}
+
+let userIdToDelete = null;
+
 $(document).on('submit', '#addUserForm', function (e) {
     if (!window.location.pathname.includes('/users')) {
         return;
@@ -22,9 +37,7 @@ $(document).on('submit', '#addUserForm', function (e) {
                 $('#AddNewModal').modal('hide');
                 $('#addUserForm')[0].reset();
                 showToast('success', 'User added successfully!');
-                setTimeout(() => {
-                    window.Project4Navigation.refresh();
-                }, 1000); 
+                refreshUsersTable();
             } else {
                 showToast('error', response.message || 'Failed to add user.');
             }
@@ -82,7 +95,7 @@ $(document).on('submit', '#editUserForm', function (e) {
                 if (response.success) {
                     $('#editUserModal').modal('hide');
                     showToast('success', 'User Updated successfully!');
-                    setTimeout(() => window.Project4Navigation.refresh(), 1000);
+                    refreshUsersTable();
                 } else {
                     alert('Error updating: ' + (response.message || 'Unknown error'));
                 }
@@ -99,31 +112,47 @@ $(document).on('click', '.deleteUserBtn', function () {
         return;
     }
 
-    const userId = $(this).data('id');
+    userIdToDelete = $(this).data('id');
+    $('#deleteUserModal').modal('show');
+});
+
+$(document).on('hidden.bs.modal', '#deleteUserModal', function () {
+    userIdToDelete = null;
+});
+
+$(document).on('click', '#confirmDeleteUser', function () {
+    if (!userIdToDelete) {
+        return;
+    }
+
+    const $confirmButton = $(this);
     const csrfName = $('meta[name="csrf-name"]').attr('content');
     const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    if (confirm('Are you sure you want to delete this user?')) {
-        $.ajax({
-            url: baseUrl + 'users/delete/' + userId,
-            method: 'POST', 
-            data: {
-                _method: 'DELETE',
-                [csrfName]: csrfToken
-            },
-            success: function (response) {
-                if (response.success) {
-                    showToast('success', 'Users deleted successfully.');
-                    setTimeout(() => window.Project4Navigation.refresh(), 1000);
-                } else {
-                    alert(response.message || 'Failed to delete.');
-                }
-            },
-            error: function () {
-                alert('Something went wrong while deleting.');
+    $confirmButton.prop('disabled', true);
+    $.ajax({
+        url: baseUrl + 'users/delete/' + userIdToDelete,
+        method: 'POST',
+        data: {
+            _method: 'DELETE',
+            [csrfName]: csrfToken
+        },
+        success: function (response) {
+            if (response.success) {
+                $('#deleteUserModal').modal('hide');
+                showToast('success', 'Users deleted successfully.');
+                refreshUsersTable();
+            } else {
+                showToast('error', response.message || 'Failed to delete.');
             }
-        });
-    }
+        },
+        error: function () {
+            showToast('error', 'Something went wrong while deleting.');
+        },
+        complete: function () {
+            $confirmButton.prop('disabled', false);
+        }
+    });
 });
 
 function initializeUsersPage() {

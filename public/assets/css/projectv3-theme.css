@@ -849,6 +849,113 @@ textarea:focus-visible {
   font-weight: 700;
 }
 
+.user-delete-dialog {
+  max-width: 420px;
+}
+
+.user-delete-card {
+  position: relative;
+}
+
+.user-delete-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.9rem;
+  z-index: 1;
+  padding: 0.2rem 0.5rem;
+  color: var(--bmis-muted);
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.user-delete-close:hover {
+  color: var(--bmis-text);
+  opacity: 1;
+}
+
+.user-delete-body {
+  padding: 2rem 2rem 1.35rem;
+  text-align: center;
+}
+
+.user-delete-icon {
+  display: grid;
+  width: 4.25rem;
+  height: 4.25rem;
+  margin: 0 auto 1.15rem;
+  place-items: center;
+  border: 1px solid #f5c6cb;
+  border-radius: 50%;
+  background: #fff1f2;
+  color: #dc3545;
+  font-size: 1.55rem;
+}
+
+.user-delete-title {
+  margin: 0 0 0.55rem;
+  color: var(--bmis-text);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.user-delete-description {
+  max-width: 19rem;
+  margin: 0 auto 1.1rem;
+  color: var(--bmis-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.user-delete-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #f8d7da;
+  border-radius: 0.7rem;
+  background: #fff7f7;
+  color: #842029;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.user-delete-warning i {
+  margin-top: 0.08rem;
+  color: #dc3545;
+}
+
+.user-delete-footer {
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0 2rem 1.6rem;
+  border-top: 0;
+  background: var(--bmis-surface);
+}
+
+.user-delete-footer .btn {
+  min-width: 7.5rem;
+  min-height: 40px;
+  border-radius: 0.65rem;
+  font-weight: 600;
+}
+
+.user-delete-cancel {
+  border: 1px solid var(--bmis-border);
+  background: var(--bmis-surface);
+  color: var(--bmis-text);
+}
+
+.user-delete-cancel:hover {
+  background: var(--bmis-bg);
+  color: var(--bmis-text);
+}
+
+.user-delete-confirm {
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.18);
+}
+
 .main-footer {
   margin-left: 250px;
   padding: 1rem 1.5rem;
@@ -999,6 +1106,26 @@ textarea:focus-visible {
 .dark-mode .modal-title,
 .dark-mode .form-group label {
   color: var(--bmis-text);
+}
+
+.dark-mode .user-delete-icon {
+  border-color: rgba(248, 113, 113, 0.25);
+  background: rgba(220, 53, 69, 0.14);
+  color: #ff808b;
+}
+
+.dark-mode .user-delete-warning {
+  border-color: rgba(248, 113, 113, 0.22);
+  background: rgba(220, 53, 69, 0.1);
+  color: #ffc2c7;
+}
+
+.dark-mode .user-delete-warning i {
+  color: #ff808b;
+}
+
+.dark-mode .user-delete-cancel {
+  border-color: #49423d;
 }
 
 .dark-mode .table {
